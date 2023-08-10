@@ -20,6 +20,16 @@
         include_once "php-scripts/test-connection.php";
         testConnection();
     }
+
+    if (isset($_POST['addHelloWorld'])) {
+        include_once "php-scripts/add-hello-world.php";
+        addHelloWorld();
+    }
+
+    if (isset($_POST['dropTable'])) {
+        include_once "php-scripts/drop-table.php";
+        dropTableWrapper();
+    }
     ?>
 
     
@@ -27,10 +37,14 @@
         <input type="submit" name="simpleEcho" value="Simple Echo">
     </form>
     <form method="post">
-        <input type="submit" name="verifyInstallation" value="Check connection">
+        <input type="submit" name="verifyInstallation" value="Check installation">
     </form>
     <form method="post">
     <input type="submit" name="testConnection" value="Test MySQL Connection">
+    <form method="post">
+    <input type="submit" name="addHelloWorld" value="Add hello world">
+    <form method="post">
+    <input type="submit" name="dropTable" value="Drop Table">
 </form>
 
     

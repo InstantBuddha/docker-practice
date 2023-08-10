@@ -12,11 +12,11 @@ to purge stuff:
 
 ## The working alpine Dockerfile:
 
-build it:
+**build it:**
 ```
 docker build -t php-practice-2 .
 ```
-run it solo OR
+run it solo 
 ```
 docker run -it -p 8080:80 --name php-practice-2 php-practice-2
 
@@ -28,7 +28,7 @@ OR create network
 docker network create my-network
 ```
 
-and run it under it:
+**and run it under it:**
 
 ```
 docker run -it -d -p 8080:80 --network my-network --name php-practice-2 php-practice-2

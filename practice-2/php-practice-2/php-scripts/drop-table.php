@@ -1,30 +1,36 @@
 <?php
-include "is-there-table.php";
+include_once "is-there-table.php";
 
-$servername = "localhost";
-$username = "testUser";
-$password = "testPassword1234";
-$dbname = "test_database";
-$tableName = "myHelloWorlds";
+function dropTableWrapper()
+{
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+    $servername = 'mysql-container';
+    $username = "myuser";
+    $password = "mypassword";
+    $dbname = "mydb";
+    $tableName = "myHelloWorlds";
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-function dropTable($connection, $tableName) {
-    $sql = "DROP TABLE $tableName";
-    if ($connection->query($sql) === TRUE) {
-        echo "Table '$tableName' dropped successfully!\n";
-    } else {
-        echo "Error dropping table: " . $connection->error;
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
+
+    function dropTable($connection, $tableName)
+    {
+        $sql = "DROP TABLE $tableName";
+        if ($connection->query($sql) === TRUE) {
+            echo "Table '$tableName' dropped successfully!\n";
+        } else {
+            echo "Error dropping table: " . $connection->error;
+        }
+    }
+
+    if (isThereTable($conn, $tableName)) {
+        dropTable($conn, $tableName);
+    }
+
+    $conn->close();
 }
 
-if (isThereTable($conn, $tableName)){
-    dropTable($conn, $tableName);
-}
-
-$conn->close();
 ?>
