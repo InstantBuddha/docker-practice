@@ -9,3 +9,14 @@ and
 
 to purge stuff:
 ```sudo docker system prune```
+
+## The working alpine Dockerfile:
+
+build it:
+```
+docker build -t php-practice-2 .
+```
+run it:
+```
+docker run -it --rm --name my-running-app php-practice-2
+```
