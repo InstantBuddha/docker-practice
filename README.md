@@ -12,11 +12,9 @@ to purge stuff:
 
 ## The working alpine Dockerfile:
 
-build it:
+build and run it:
 ```
 docker build -t php-practice-2 .
-```
-run it:
-```
-docker run -it --rm --name my-running-app php-practice-2
+docker run -it -p 8080:80 --name php-practice-2 php-practice-2
+
 ```

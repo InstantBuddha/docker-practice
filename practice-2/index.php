@@ -6,8 +6,18 @@
 <body>
     <h1>Php practice 2</h1>
     <?php
-    echo "Php is running";
+    if (isset($_POST['btnClicked'])) {
+        if (extension_loaded('mysqli')) {
+            echo "MySQLi extension is enabled.";
+        } else {
+            echo "MySQLi extension is not enabled.";
+        }
+    }
     ?>
+
+    <form method="post">
+        <input type="submit" name="btnClicked" value="Check connection">
+    </form>
 
     
 </body>
