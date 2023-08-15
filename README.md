@@ -51,5 +51,5 @@ docker build -t php-practice-new .
 
 Run it with network and Bind mounting:
 ```
-docker container run -d --name php-practice-new -p 8080:80 -v ${pwd}:/usr/src/myapp --network my-network php-practice-new
+docker container run -d --name php-practice-new -p 8083:80 -v ${pwd}:/usr/src/myapp --network my-network php-practice-new
 ```
