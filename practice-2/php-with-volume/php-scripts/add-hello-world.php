@@ -27,9 +27,9 @@ function addHelloWorld()
     )";
 
         if ($connection->query($sql) === TRUE) {
-            echo "Table '$tableName' created successfully!\n";
+            echo "Table '$tableName' created successfully!<br>";
         } else {
-            echo "Error creating table: " . $connection->error . "\n";
+            echo "Error creating table: " . $connection->error . "<br>";
             $connection->close();
             exit;
         }
@@ -41,10 +41,10 @@ function addHelloWorld()
         $sql = "INSERT INTO $tableName (message) VALUES ('$message')";
 
         if ($connection->query($sql) === TRUE) {
-            echo "New entry added successfully!\n";
+            echo "New entry added successfully!<br>";
             showTables($connection, $tableName);
         } else {
-            echo "Error adding entry: " . $connection->error . "\n";
+            echo "Error adding entry: " . $connection->error . "<br>";
         }
     }
 
@@ -54,12 +54,12 @@ function addHelloWorld()
         $result = $connection->query($sql);
 
         if ($result->num_rows > 0) {
-            echo "\nAll entries in the table:\n";
+            echo "<br>All entries in the table:<br>";
             while ($row = $result->fetch_assoc()) {
-                echo "ID: " . $row["id"] . " - Message: " . $row["message"] . "\n";
+                echo "ID: " . $row["id"] . " - Message: " . $row["message"] . "<br>";
             }
         } else {
-            echo "\nNo entries found in the table.\n";
+            echo "<br>No entries found in the table.<br>";
         }
     }
 

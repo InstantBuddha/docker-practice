@@ -12,6 +12,6 @@ function testConnection() {
         die("Connection failed: " . $connection->connect_error);
     }
 
-    echo "Connected successfully!";
+    echo "Connected successfully!<br>";
 }
 ?>

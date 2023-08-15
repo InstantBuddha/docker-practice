@@ -20,7 +20,7 @@ function dropTableWrapper()
     {
         $sql = "DROP TABLE $tableName";
         if ($connection->query($sql) === TRUE) {
-            echo "Table '$tableName' dropped successfully!\n";
+            echo "Table '$tableName' dropped successfully!<br>";
         } else {
             echo "Error dropping table: " . $connection->error;
         }
