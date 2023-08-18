@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  alpine:
+    build:
+      context: .
+      dockerfile: alpine/Dockerfile
+    image: custom-alpine
+    ports:
+      - "8080:80"
+    environment:
+      MYSQL_HOST: "mysql"
+      MYSQL_PORT: "3306"
+      MYSQL_USER: "myuser"
+      MYSQL_PASSWORD: "mypassword"
+      MYSQL_DATABASE: "mydb"  
+  mysql:
+    build:
+      context: .
+      dockerfile: mysql/Dockerfile
+    image: custom-mysql
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: "mydb"
+      MYSQL_HOST: "mysql-container"
+      MYSQL_USER: "myuser"
+      MYSQL_PASSWORD: "mypassword"
+    volumes:
+      - dbData:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+volumes:
+  dbData:

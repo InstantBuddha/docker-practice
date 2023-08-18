@@ -1,16 +1,12 @@
 <?php
 include_once "is-there-table.php";
 
-function addHelloWorld()
+function addHelloWorld($host, $user, $password, $database)
 {
-    $servername = 'mysql-container';
-    $username = "myuser";
-    $password = "mypassword";
-    $dbname = "mydb";
     $tableName = "myHelloWorlds";
     $message = "Hello World!";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($host, $user, $password, $database);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

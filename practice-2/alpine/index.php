@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Test connection</title>
 </head>
+
 <body>
     <h1>Php practice new</h1>
     <?php
+
+    $host = getenv('MYSQL_HOST');
+    $port = getenv('MYSQL_PORT') ?: 3306;
+    $user = getenv('MYSQL_USER');
+    $password = getenv('MYSQL_PASSWORD');
+    $database = getenv('MYSQL_DATABASE');
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        include_once "php-scripts/verify-installation.php";
-        include_once "php-scripts/simple-echo.php";
-        include_once "php-scripts/test-connection.php";
-        include_once "php-scripts/add-hello-world.php";
-        include_once "php-scripts/drop-table.php";
+        include_once __DIR__ . "/php-scripts/verify-installation.php";
+        include_once __DIR__ . "/php-scripts/simple-echo.php";
+        include_once __DIR__ . "/php-scripts/test-connection.php";
+        include_once __DIR__ . "/php-scripts/add-hello-world.php";
+        include_once __DIR__ . "/php-scripts/drop-table.php";
+
 
         if (isset($_POST['verifyInstallation'])) {
             verifyInstallation();
@@ -22,15 +32,15 @@
         }
 
         if (isset($_POST['testConnection'])) {
-            testConnection();
+            testConnection($host, $user, $password, $database, $port);
         }
 
         if (isset($_POST['addHelloWorld'])) {
-            addHelloWorld();
+            addHelloWorld($host, $user, $password, $database);
         }
 
         if (isset($_POST['dropTable'])) {
-            dropTableWrapper();
+            dropTableWrapper($host, $user, $password, $database);
         }
     }
     ?>
@@ -43,4 +53,5 @@
         <input type="submit" name="dropTable" value="Drop Table"><br>
     </form>
 </body>
+
 </html>

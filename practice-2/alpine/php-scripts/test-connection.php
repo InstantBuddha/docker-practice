@@ -1,10 +1,5 @@
 <?php
-function testConnection() {
-    $host = 'mysql-container'; // This is the container name
-    $port = 3306;              // MySQL default port
-    $user = 'myuser';          // MySQL user (set in the Dockerfile)
-    $password = 'mypassword';  // MySQL password (set in the Dockerfile)
-    $database = 'mydb';        // MySQL database (set in the Dockerfile)
+function testConnection($host, $user, $password, $database, $port) {
 
     $connection = new mysqli($host, $user, $password, $database, $port);
 
