@@ -15,8 +15,6 @@ function addHelloWorld($host, $user, $password, $database)
     function createTable($connection, $tableName)
     {
         $sql = "SHOW TABLES LIKE '$tableName'";
-
-
         $sql = "CREATE TABLE $tableName (
         id INT AUTO_INCREMENT PRIMARY KEY,
         message VARCHAR(255) NOT NULL
