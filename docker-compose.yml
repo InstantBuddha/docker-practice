@@ -2,8 +2,8 @@ version: "3.9"
 services:
   alpine:
     build:
-      context: .
-      dockerfile: alpine/Dockerfile
+      context: ./alpine
+      dockerfile: Dockerfile
     image: custom-alpine
     ports:
       - "8080:80"
@@ -14,13 +14,9 @@ services:
       MYSQL_PASSWORD: "mypassword"
       MYSQL_DATABASE: "mydb"  
   mysql:
-    build:
-      context: .
-      dockerfile: mysql/Dockerfile
-    image: custom-mysql
+    image: mysql:latest
     ports:
       - "3306:3306"
-      - "33060:33060"
     environment:
       MYSQL_ROOT_PASSWORD: my-secret-pw
       MYSQL_DATABASE: "mydb"
