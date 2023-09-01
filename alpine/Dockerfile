@@ -6,7 +6,7 @@ RUN apk update && \
     rm -rf /var/cache/apk/*
 
 # Copy application files
-COPY ./alpine /usr/src/myapp
+COPY . /usr/src/myapp
 
 # Set working directory
 WORKDIR /usr/src/myapp

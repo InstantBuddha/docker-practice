@@ -1,5 +1,5 @@
 <?php
     function simpleEcho(){
-        echo "It works<br>";
+        echo "It works yeah<br>";
     }
 ?>
