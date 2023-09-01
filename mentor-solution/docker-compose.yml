@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  php:
+    image: mentoring_php
+    build:
+      context: .
+    volumes:
+      - ./:/var/www/app:rw
+    networks:
+      - mentoring_app_network
+  db:
+    image: postgres:15-alpine3.18
+    environment:
+      - PGTZ=Europe/Budapest
+      - POSTGRES_DB=mentoring_app_database
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - mentoring_database_volume:/var/lib/postgresql/data
+    networks:
+      - mentoring_app_network
+
+networks:
+  mentoring_app_network:
+    name: mentoring_app_network
+volumes:
+  mentoring_database_volume:
+    name: mentoring_database_volume
